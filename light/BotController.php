@@ -10,9 +10,10 @@ class BotController
 
     public function handleMessage($postdata)
     {
-        // $postdata = file_get_contents("php://input");
-        // file_put_contents('a.log', $postdata);
         $data = json_decode($postdata);
+        if(empty($data)){
+            return [];
+        }
         if($data->header->name == 'DiscoveryDevices' && $data->header->namespace == 'AliGenie.Iot.Device.Discovery'){
             return $this->maclist($data->header->messageId);
         }
@@ -26,11 +27,11 @@ class BotController
 
     private function sendCode($code)
     {
-        $connection = new AMQPStreamConnection('mq.aitboy.cn', 5672, 'test', 'test');
+        $connection = new AMQPStreamConnection('mq.aitboy.cn', 32772);
         $channel = $connection->channel();
-        $channel->queue_declare('pi', false, false, false, false);
+        $channel->queue_declare('pi', false, true, false, false);
         $msg = new AMQPMessage($code);
-        $channel->basic_publish($msg); //路由地址
+        $channel->basic_publish($msg, 'pi'); //路由地址
     }
     
 function maclist($messageId){

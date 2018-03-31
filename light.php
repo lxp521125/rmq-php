@@ -8,22 +8,14 @@ http://tmall.aitboy.cn/light.php
  */
 
 require_once "./vendor/autoload.php";
-use light\BotController;
+require_once "./light/BotController.php";
 
 function jsonExit($data){
     echo json_encode($data);
     die;
 }
+$model = new light\BotController();
 
-while(1){
-    if(file_get_contents('1.txt') == 1){
-        `sudo echo 1 > /sys/class/gpio/gpio21/value`;
-        file_get_contents('1.txt', '');
-        sleep(1);
-    }
-    if(file_get_contents('1.txt') == 0){
-        `sudo echo 0 > /sys/class/gpio/gpio21/value`;
-        file_get_contents('1.txt', '');
-        sleep(1);
-    }
-}
+$postdata = file_get_contents("php://input");
+file_put_contents('a.log', $postdata);
+jsonExit($model->handleMessage($postdata));
