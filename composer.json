@@ -1,0 +1,12 @@
+{
+    "name": "xiaopeng/rmq-php",
+    "require": {
+        "php-amqplib/php-amqplib": ">=2.6.1"
+    },
+    "authors": [
+        {
+            "name": "xiaopeng.lei",
+            "email": "xiaopeng.lei@gaodun.com"
+        }
+    ]
+}
