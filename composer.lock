@@ -4,8 +4,37 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "82b52c8a994a8e65a0ee6fa600435bad",
+    "content-hash": "090f5aea5217a3846a5ef00c61649371",
     "packages": [
+        {
+            "name": "bluerhinos/phpmqtt",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:lxp521125/phpMQTT.git",
+                "reference": "6c15cef0b1b2cb4c438e526c78d805b69a733f9d"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bluerhinos\\": "./"
+                }
+            },
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Milsted",
+                    "email": "andrew@bluerhinos.co.uk"
+                }
+            ],
+            "description": "Simple MQTT Class",
+            "time": "2017-10-16T21:14:36+00:00"
+        },
         {
             "name": "php-amqplib/php-amqplib",
             "version": "v2.7.2",
