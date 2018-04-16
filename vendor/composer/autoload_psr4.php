@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'PhpAmqpLib\\' => array($vendorDir . '/php-amqplib/php-amqplib/PhpAmqpLib'),
+    'Bluerhinos\\' => array($vendorDir . '/bluerhinos/phpmqtt'),
 );

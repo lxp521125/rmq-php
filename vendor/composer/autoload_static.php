@@ -11,12 +11,20 @@ class ComposerStaticInitb1857c1c4034fb51e8fc60069852162a
         array (
             'PhpAmqpLib\\' => 11,
         ),
+        'B' => 
+        array (
+            'Bluerhinos\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'PhpAmqpLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
+        ),
+        'Bluerhinos\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bluerhinos/phpmqtt',
         ),
     );
 

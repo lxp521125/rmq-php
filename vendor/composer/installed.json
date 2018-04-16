@@ -1,5 +1,36 @@
 [
     {
+        "name": "bluerhinos/phpmqtt",
+        "version": "v0.0.1",
+        "version_normalized": "0.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "git@github.com:lxp521125/phpMQTT.git",
+            "reference": "6c15cef0b1b2cb4c438e526c78d805b69a733f9d"
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "time": "2017-10-16T21:14:36+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Bluerhinos\\": "./"
+            }
+        },
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Andrew Milsted",
+                "email": "andrew@bluerhinos.co.uk"
+            }
+        ],
+        "description": "Simple MQTT Class"
+    },
+    {
         "name": "php-amqplib/php-amqplib",
         "version": "v2.7.2",
         "version_normalized": "2.7.2.0",
