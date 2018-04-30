@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'publictool\\' => array($baseDir . '/publictool'),
     'PhpAmqpLib\\' => array($vendorDir . '/php-amqplib/php-amqplib/PhpAmqpLib'),
     'Bluerhinos\\' => array($vendorDir . '/bluerhinos/phpmqtt'),
 );

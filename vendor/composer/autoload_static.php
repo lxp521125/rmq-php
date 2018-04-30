@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitb1857c1c4034fb51e8fc60069852162a
 {
     public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'publictool\\' => 11,
+        ),
         'P' => 
         array (
             'PhpAmqpLib\\' => 11,
@@ -18,6 +22,10 @@ class ComposerStaticInitb1857c1c4034fb51e8fc60069852162a
     );
 
     public static $prefixDirsPsr4 = array (
+        'publictool\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/publictool',
+        ),
         'PhpAmqpLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
