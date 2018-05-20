@@ -46,8 +46,8 @@ function maclist($messageId){
         'payload' => [
             'devices' => [
                 [
-                    'deviceId' => 'color-light',
-                    'deviceName' => '彩灯',
+                    'deviceId' => 'light001',
+                    'deviceName' => '白灯',
                     'deviceType' => 'light',
                     'zone' => '',
                     'brand' => '',

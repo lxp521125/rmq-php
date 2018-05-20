@@ -70,7 +70,7 @@ function maclist($messageId){
         'payload' => [
             'devices' => [
                 [
-                    'deviceId' => 'color-light',
+                    'deviceId' => 'color-light001',
                     'deviceName' => '彩灯',
                     'deviceType' => 'light',
                     'zone' => '',
