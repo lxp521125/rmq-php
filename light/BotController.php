@@ -51,10 +51,16 @@ function maclist($messageId){
                     'zone' => '',
                     'brand' => '',
                     'model' => '',
-                    'icon' => 'https://git.cn-hangzhou.oss-cdn.aliyun-inc.com/uploads/aicloud/aicloud-proxy-service/41baa00903a71c97e3533cf4e19a88bb/image.png',
-                    'properties' => [],
+                    'icon' => 'https://ihcv0.ibroadlink.com/ec4appsysinfo/category2/TV.png',
+                    'properties' => [
+                        [
+                            "name"=> "powerstate",
+                            "value"=> "off"
+                        ]
+                    ],
                     'actions' => ["TurnOn","TurnOff"],
                     'extensions' => [
+                        "ex1"=>""
                     ]
                 ]
 
