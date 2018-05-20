@@ -1,15 +1,18 @@
 <?php
 
-namespace chuanglian;
-
+namespace light;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+use Bluerhinos\phpMQTT;
 use publictool\sendMessage;
 
-class BotController
+class ColorBotController
 {
+
     public function handleMessage($postdata)
     {
         $data = json_decode($postdata);
-        if (empty($data)) {
+        if(empty($data)){
             return [];
         }
         switch ($data->header->name) {
@@ -55,83 +58,81 @@ class BotController
         }
     }
 
-    public function maclist($messageId)
-    {
-        return [
+    
+function maclist($messageId){
+    return [
         'header' => [
             'namespace' => 'AliGenie.Iot.Device.Discovery',
             'name' => 'DiscoveryDevicesResponse',
             'messageId' => $messageId,
-            'payLoadVersion' => 1,
+            'payLoadVersion' => 1
         ],
         'payload' => [
             'devices' => [
                 [
-                    'deviceId' => 'chuanglian',
-                    'deviceName' => '窗帘',
-                    'deviceType' => 'curtain',
+                    'deviceId' => 'color-light',
+                    'deviceName' => '彩灯',
+                    'deviceType' => 'light',
                     'zone' => '',
                     'brand' => '',
                     'model' => '',
-                    'icon' => 'https://ihcv0.ibroadlink.com/ec4appsysinfo/category2/STB.png',
+                    'icon' => 'https://ihcv0.ibroadlink.com/ec4appsysinfo/category2/TV.png',
                     'properties' => [
                         [
-                            "name"=>"powerstate",
+                            "name"=> "powerstate",
                             "value"=> "off"
                         ]
                     ],
-                    'actions' => ['TurnOn', 'TurnOff'],
+                    'actions' => ["TurnOn","TurnOff",'SetBrightness', 'AdjustUpBrightness', 'AdjustDownBrightness', 'SetMode'],
                     'extensions' => [
-                        'ext1'=>""
-                    ],
-                ],
-            ],
-        ],
+                        "ex1"=>""
+                    ]
+                ]
+
+            ]
+        ]
     ];
-    }
+}
 
-    public function onlight($messageId, $deviceId)
-    {
-        sendMessage::mqSendCode('chuang', 'open');
-
-        return [
+function onlight($messageId, $deviceId){
+    sendMessage::mqSendCode('color-light', 'open');
+    return [
         'header' => [
-            'namespace' => 'AliGenie.Iot.Device.Control',
-            'name' => 'TurnOnResponse',
-            'messageId' => $messageId,
-            'payLoadVersion' => 1,
+            "namespace"=>"AliGenie.Iot.Device.Control",
+            "name"=>"TurnOnResponse",
+            "messageId"=>$messageId,
+            "payLoadVersion"=>1
         ],
         'payload' => [
-            'deviceId' => $deviceId,
-        ],
+            'deviceId' => $deviceId
+        ]
     ];
-    }
+}
 
-    public function offlight($messageId, $deviceId, $isOff = false)
-    {
-        sendMessage::mqSendCode('chuang', 'close');
+function offlight($messageId, $deviceId, $isOff = false){
+    sendMessage::mqSendCode('color-light', 'close');
 
-        return [
+    return [
         'header' => [
-            'namespace' => 'AliGenie.Iot.Device.Control',
-            'name' => 'TurnOffResponse',
-            'messageId' => $messageId,
-            'payLoadVersion' => 1,
+            "namespace"=>"AliGenie.Iot.Device.Control",
+            "name"=>"TurnOffResponse",
+            "messageId"=>$messageId,
+            "payLoadVersion"=>1
         ],
         'payload' => [
-            'deviceId' => $deviceId,
-        ],
+            'deviceId' => $deviceId
+        ]
     ];
-    }
-    public function SetBrightness($messageId, $deviceId, $value = 0)
+}
+public function SetBrightness($messageId, $deviceId, $value = 0)
     {
         if($value == "max"){
-            sendMessage::mqSendCode('chuang', 'open');
+            sendMessage::mqSendCode('color-light', 'open');
         }elseif($value == "min"){
-            sendMessage::mqSendCode('chuang', 'close');
+            sendMessage::mqSendCode('color-light', 'close');
         }else{
             $value = intval($value);
-            sendMessage::mqSendCode('chuang', 'set-'.$value);
+            sendMessage::mqSendCode('color-light', 'set-'.$value);
         }
         return array(
             'header' => 
@@ -150,7 +151,7 @@ class BotController
     
     public function AdjustUpBrightness($messageId, $deviceId)
     {
-        sendMessage::mqSendCode('chuang', 'up');
+        sendMessage::mqSendCode('color-light', 'up');
         return array(
             'header' => 
            array(
@@ -167,7 +168,7 @@ class BotController
     }
     public function AdjustDownBrightness($messageId, $deviceId)
     {
-        sendMessage::mqSendCode('chuang', 'down');
+        sendMessage::mqSendCode('color-light', 'down');
         
         return array(
             'header' => 
@@ -185,7 +186,7 @@ class BotController
     }
     public function SetMode($messageId, $deviceId, $value)
     {
-        sendMessage::mqSendCode('chuang', 'mode-'.$value);
+        sendMessage::mqSendCode('color-light', 'mode-'.$value);
         
         return array(
             'header' => 

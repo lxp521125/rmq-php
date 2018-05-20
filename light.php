@@ -9,12 +9,17 @@ http://tmall.aitboy.cn/light.php
 
 require_once "./vendor/autoload.php";
 require_once "./light/BotController.php";
+require_once "./light/ColorBotController.php";
 
 function jsonExit($data){
     echo json_encode($data);
     die;
 }
-$model = new light\BotController();
+if(isset($_GET['light']) &&  $_GET['light'] == 'color'){
+    $model = new light\ColorBotController();
+}else{
+    $model = new light\BotController();
+}
 
 $postdata = file_get_contents("php://input");
 file_put_contents('a.log', $postdata);
